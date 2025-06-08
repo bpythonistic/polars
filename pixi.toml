@@ -1,0 +1,16 @@
+[workspace]
+channels = ["conda-forge"]
+name = "polars"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+make-polars = "cd py-polars && make test"
+make-pre-commit = "cd py-polars && make pre-commit"
+update-fork = "git checkout main && git fetch upstream && git rebase upstream/main && git push origin main"
+update-reqs = "make requirements"
+update-rust = "rustup update && cargo clean"
+
+[dependencies]
+python = ">=3.13.3,<3.14"
+cmake = ">=4.0.2,<5"
